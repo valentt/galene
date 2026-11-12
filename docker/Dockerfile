@@ -7,8 +7,8 @@ FROM alpine
 RUN adduser -D -h /galene galene
 WORKDIR /galene
 COPY --from=build /out/ /usr/local/bin/
-COPY --from=build /src/static static
+COPY --from=build /src/static /usr/local/share/galene/static
 USER galene
 RUN mkdir data groups recordings
 EXPOSE 8443 1194 1194/udp
-ENTRYPOINT ["galene"]
+ENTRYPOINT ["galene", "-static", "/usr/local/share/galene/static"]
