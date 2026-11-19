@@ -1608,6 +1608,14 @@ async function setMedia(c, mirror, video) {
         div = document.createElement('div');
         div.id = 'peer-' + c.localId;
         div.classList.add('peer');
+        div.oncontextmenu = function(e) {
+            let user = document.getElementById(
+                'user-' + (c.up ? serverConnection.id : c.source));
+            if(!user)
+                return;
+            e.preventDefault();
+            userMenu(user);
+        };
         let peersdiv = document.getElementById('peers');
         peersdiv.appendChild(div);
     }
