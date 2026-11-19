@@ -527,6 +527,9 @@ function setButtonsVisibility() {
     setVisibility('simulcastform', canPresent);
 
     setVisibility('collapse-video', mediacount && mobilelayout);
+
+    document.getElementById('box').classList.toggle(
+        'chat-op', permissions.indexOf('op') >= 0);
 }
 
 /**
@@ -2926,6 +2929,17 @@ function addToChatbox(id, peerId, dest, nick, time, privileged, history, kind, m
                 throw new Error("Couldn't find chat message div");
             chatMessageMenu(elt);
         });
+        let menu = document.createElement('span');
+        menu.classList.add('message-menu');
+        menu.title = 'Message menu';
+        let icon = document.createElement('i');
+        icon.classList.add('fas', 'fa-ellipsis-v');
+        icon.setAttribute('aria-hidden', 'true');
+        menu.appendChild(icon);
+        menu.onclick = function() {
+            chatMessageMenu(container);
+        };
+        container.appendChild(menu);
     }
 
     /** @type{HTMLElement} */

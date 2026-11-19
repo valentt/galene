@@ -366,6 +366,29 @@ textarea.form-reply {
     text-align: left;
 }
 
+.message-menu {
+    display: none;
+    float: right;
+    padding-left: 6px;
+    color: #666;
+    cursor: pointer;
+}
+
+.chat-op .message-menu {
+    display: block;
+    visibility: hidden;
+}
+
+.chat-op .message:hover .message-menu {
+    visibility: visible;
+}
+
+@media (hover: none) {
+    .chat-op .message-menu {
+        visibility: visible;
+    }
+}
+
 .message-sender {
     background: #e6e6e6;
 }
