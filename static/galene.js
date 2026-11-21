@@ -4042,6 +4042,8 @@ document.getElementById('loginform').onsubmit = async function(e) {
 /** @type{CameraTest} */
 let cameraTest = null;
 
+setVisibility('test-camera', 'mediaDevices' in navigator);
+
 document.getElementById('test-camera').ontoggle = async function(e) {
     let details = this;
     if(!(details instanceof HTMLDetailsElement))
